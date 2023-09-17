@@ -1,46 +1,115 @@
 body{
     display: flex;
     flex-direction: row;
-    height: 150vh;
+    height: 140vh;
 }
+main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+/*configuracion de parte productos*/
 #productos{
-    width: 80%;
-    height: 50%;
-    
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: gray;
+    text-align: center;
+
 }
 .seccion{
     display: flex;
     flex-direction: row;
     height: 450px;
+    padding-left: 10px;
+
 }
 .producto{
-    width: 310px;
-    height: 400px;
+    width: 290px;
+    height: 420px;
     display: flex;
-    align-items: start;
-    justify-content: start;
+    flex-direction: column;
+    align-items: center;
     margin: 10px;
-    margin-top: 30px;
     border: 1px solid black;
-   
+  
 
 }
 .info_producto{
-    height: 100px;
+    height: 100%;
     width: 100%;
-    align-items: end;
-  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; 
+    
+}
 
-   
+.info_producto p{
+   position: relative;
+   bottom: 15px;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 1rem;
+
+    
+}
+.info_producto button{
+  position: relative;
+  bottom: 15px;
 }
 .producto img{
     height: 250px;
     width: 250px;
-    
 
 }
 
 .titulo_producto{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
+   
+}
+
+/*configuracion de carrito*/
+#carrito{
+    height: 100%;
+    width: 100%;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7F7F7;
+   
+}
+
+h8{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    color:black;
+}
+
+.titulos_carrito{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 45px;
+    width: 100%;
+   
+
+}
+.titulos_carrito p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    color: black;
 }
