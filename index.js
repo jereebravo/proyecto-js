@@ -12,10 +12,51 @@ localStorage.setItem("productos" , productosJson);
 
 let btnComprar = document.getElementsByClassName("btnComprar");
 
-btnComprar.addEventListener("click" , agregarCarrito)
+for(let boton of btnComprar){
+    boton.addEventListener("click" , agregarCarrito);
+}
 
-function agregarCarrito(producto){
+let carrito = [];
+
+function agregarCarrito(e){
+
+    let hijo = e.target;
+    let padre = hijo.parentNode;
+    let abuelo = padre.parentNode;
+
+    let nombreProducto = padre.querySelector("h2").innerText;
+    let precioProducto = padre.querySelector("p").innerText;
+    let imgProducto = abuelo.querySelector("img").src;
+
+
+    let producto = {
+        nombre: nombreProducto,
+        precio: precioProducto,
+        img: imgProducto,
+        cantidad: 1
+
+    };
+
+    carrito.push(producto);
+   mostrarCarrito();
     
+}
+
+function mostrarCarrito(){
+
+    let tabla = document.getElementById("tbody");
+    tabla.innerHTML = "";
+
+    for( let producto of carrito ){
+
+        let fila = document.createElement("tr");
+        fila.innerHTML = 
+       `<td><img src="${producto.img}" class="producto_imagen"></td>
+        <td><p>${producto.nombre}</p></td>
+        <td>${producto.cantidad}</td>
+        <td>${producto.precio}</td>`;
+        tabla.append(fila);
+    }
 
 }
 
