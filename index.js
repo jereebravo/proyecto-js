@@ -18,6 +18,9 @@ for(let boton of btnComprar){
 
 let carrito = [];
 
+let carritoStorage = JSON.stringify( carrito );
+sessionStorage.setItem( "productoCarrito" , carritoStorage);
+
 function agregarCarrito(e){
 
     let hijo = e.target;
@@ -28,27 +31,33 @@ function agregarCarrito(e){
     let precioProducto = padre.querySelector("p").innerText;
     let imgProducto = abuelo.querySelector("img").src;
 
+  
+
 
     
 
     let productoExistente = carrito.find( oso => oso.nombre === nombreProducto);
 
-    if( productoExistente){
+    if( productoExistente ){
         productoExistente.cantidad++;
+       
         let cantidad = productoExistente.cantidad;
         let productoPrecioNumerico = parseInt(precioProducto.replace("$" , ""));
         let total = cantidad * productoPrecioNumerico;
-       console.log(total);
+        productoExistente.total = total;
+
         
+           
     }
+
     else{
        
         let producto = {
             nombre: nombreProducto,
             precio: precioProducto,
             img: imgProducto,
+            total: parseInt(precioProducto.replace("$" , "")),
             cantidad: 1
-    
         };
         carrito.push(producto);
     }
@@ -70,7 +79,8 @@ function mostrarCarrito(){
        `<td><img src="${producto.img}" class="producto_imagen"></td>
         <td><p>${producto.nombre}</p></td>
         <td>${producto.cantidad}</td>
-        <td>${producto.precio}</td>
+        <td>${producto.precio}<td>
+        <td>${"$"+producto.total}<td>
         <td><button class="btnBorrarProducto">Borrar</button></td>`;
         tabla.append(fila);
     }
@@ -88,6 +98,12 @@ function borrarProducto(e){
     console.log("BORRAR ESTE ELEMENTO: ", e.target );
 
     let abuelo = e.target.parentNode.parentNode;
+    let nombreProducto = abuelo.querySelector("p").innerText;
     
     abuelo.remove();
+     
+    carrito = carrito.filter(producto => producto.nombre !== nombreProducto);
 }
+
+let compraCarrito = document.getElementById("compraCarrito");
+compraCarrito.addEventListener("click" , compraCarrito);
