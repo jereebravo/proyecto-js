@@ -29,15 +29,31 @@ function agregarCarrito(e){
     let imgProducto = abuelo.querySelector("img").src;
 
 
-    let producto = {
-        nombre: nombreProducto,
-        precio: precioProducto,
-        img: imgProducto,
-        cantidad: 1
+    
 
-    };
+    let productoExistente = carrito.find( oso => oso.nombre === nombreProducto);
 
-    carrito.push(producto);
+    if( productoExistente){
+        productoExistente.cantidad++;
+        let cantidad = productoExistente.cantidad;
+        let productoPrecioNumerico = parseInt(precioProducto.replace("$" , ""));
+        let total = cantidad * productoPrecioNumerico;
+       console.log(total);
+        
+    }
+    else{
+       
+        let producto = {
+            nombre: nombreProducto,
+            precio: precioProducto,
+            img: imgProducto,
+            cantidad: 1
+    
+        };
+        carrito.push(producto);
+    }
+
+  
    mostrarCarrito();
     
 }
@@ -54,9 +70,24 @@ function mostrarCarrito(){
        `<td><img src="${producto.img}" class="producto_imagen"></td>
         <td><p>${producto.nombre}</p></td>
         <td>${producto.cantidad}</td>
-        <td>${producto.precio}</td>`;
+        <td>${producto.precio}</td>
+        <td><button class="btnBorrarProducto">Borrar</button></td>`;
         tabla.append(fila);
+    }
+
+    let btnBorrar = document.querySelectorAll(".btnBorrarProducto");
+
+    for( let btn of btnBorrar){
+        btn.addEventListener("click" , borrarProducto);
+
     }
 
 }
 
+function borrarProducto(e){
+    console.log("BORRAR ESTE ELEMENTO: ", e.target );
+
+    let abuelo = e.target.parentNode.parentNode;
+    
+    abuelo.remove();
+}
