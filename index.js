@@ -7,8 +7,7 @@ let productos = [
     {nombre: "Oso Rojo" , stock: 6 , precio:5000}
 ]
 
-let productosJson = JSON.stringify( productos);
-localStorage.setItem("productos" , productosJson);
+
 
 let btnComprar = document.getElementsByClassName("btnComprar");
 
@@ -18,8 +17,6 @@ for(let boton of btnComprar){
 
 let carrito = [];
 
-let carritoStorage = JSON.stringify( carrito );
-sessionStorage.setItem( "productoCarrito" , carritoStorage);
 
 function agregarCarrito(e){
 
@@ -62,7 +59,7 @@ function agregarCarrito(e){
         carrito.push(producto);
     }
 
-  
+   carritoStorage();
    mostrarCarrito();
     
 }
@@ -103,6 +100,12 @@ function borrarProducto(e){
     abuelo.remove();
      
     carrito = carrito.filter(producto => producto.nombre !== nombreProducto);
+    carritoStorage();
+}
+
+function carritoStorage(){
+    let carritoStorage = JSON.stringify(carrito);
+    sessionStorage.setItem( "productosCarrito" , carritoStorage);
 }
 
 let compraCarrito = document.getElementById("compraCarrito");
