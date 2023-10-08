@@ -1,18 +1,25 @@
 body{
     display: flex;
     flex-direction: row;
-    height: 140vh;
+    height: 210vh;
 }
 main{
     height: 100%;
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 1.5fr 0.5fr;
+    grid-template-areas: 
+    "productos carrito"
+    "reseñas carrito";
+    
 }
 /*configuracion de parte productos*/
 #productos{
-    width: 70%;
-    height: 100%;
+    width: 95%;
+    height: 80%;
+    grid-area: productos;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,8 +43,8 @@ h1{
 
 }
 .producto{
-    width: 290px;
-    height: 420px;
+    width: 250px;
+    height: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,8 +77,8 @@ h1{
   bottom: 15px;
 }
 .producto img{
-    height: 250px;
-    width: 250px;
+    height: 230px;
+    width: 230px;
 
 }
 
@@ -83,13 +90,13 @@ h1{
 
 /*configuracion de carrito*/
 #carrito{
-    height: 100%;
-    width: 100%;
-    margin-left: 5px;
+    width: 80%;
     display: flex;
     flex-direction: column;
     background-color: #F7F7F7;
     border: 0.5px solid black;
+    margin-left: 30px;
+    grid-area: carrito;
    
 }
 
@@ -120,3 +127,11 @@ h3{
     height: 50px;
     width: 50px;
 }
+
+#reseñas{
+    height:65%;
+    grid-area: reseñas;
+    
+    
+}
+

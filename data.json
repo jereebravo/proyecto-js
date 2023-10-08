@@ -1,0 +1,47 @@
+[
+   
+ {
+    "usuario": 1,
+    "nombre": "Maria",
+    "apellido": "Perez",
+    "edad": 21,
+    "reseña": "Yo le compre un osito marron a mi sobrinito y la verdad que le re gusto, muy buena calidad, recomiendo al 100%"
+ },
+
+ {
+    "usuario": 2,
+    "nombre": "leticia",
+    "apellido": "Diaz",
+    "edad": 25,
+    "reseña": "Me encantaron, me compre dos ositos y son buenisimo en calidad , precio"
+ },
+
+
+ {
+    "usuario": 3,
+    "nombre": "Pepe",
+    "apellido": "Gonsalez",
+    "edad": 50,
+    "reseña": "Compre unos ositos para mis nietos y quedaron encantados, nada que reprochar"
+ },
+
+
+ {
+    "usuario": 4,
+    "nombre": "Luna",
+    "apellido": "Peretti",
+    "edad": 30,
+    "reseña": "Me compre un osito y son de muy buena calidad, mas de lo que se ve en fotos, muy recomendados"
+ },
+
+
+
+ {
+    "usuario": 5,
+    "nombre": "Marcelo",
+    "apellido": "Soto",
+    "edad": 42,
+    "reseña": "Le compre un oso a mi hija y me llego en menos de dos dias, muy buena la pagina, la recomiendo"
+ }
+
+]

@@ -108,5 +108,67 @@ function carritoStorage(){
     sessionStorage.setItem( "productosCarrito" , carritoStorage);
 }
 
-let compraCarrito = document.getElementById("compraCarrito");
-compraCarrito.addEventListener("click" , compraCarrito);
+
+
+
+    
+let reseñas = 'data.json'
+fetch(reseñas)
+.then(response => response.json())
+.then (data => {
+    
+    let divReseña = document.getElementById("reseñas");
+   
+    data.forEach(item => {
+       let tituloReseña = document.createElement("h2");
+       tituloReseña.textContent = item.nombre;
+       
+       let reseña = document.createElement("p");
+       reseña.textContent = item.reseña;
+
+       divReseña.appendChild(tituloReseña);
+       divReseña.appendChild(reseña);
+     })
+    
+});
+
+
+let btnComprarProducto = document.querySelector("#comprarTodo");
+
+function comprar(){
+    let total = 0;
+   
+    for( let producto of carrito){
+      total += producto.total;
+
+    }
+
+    console.log("el total de la compra es: ", total);
+    Swal.fire({
+        title: "Total de la compra",
+        text: `El total de la compra es $${total}. ¿Desea confirmar la compra?`,
+        icon: "info",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Aceptar",
+       
+    }).then((result) => {
+        if (result.isConfirmed){
+            Toastify({
+                text: "Muchas gracias por su compra",
+                duration: 2000,
+                gravity:"top",
+                position: "rigth",
+                backgroundColor: "green",
+
+            }).showToast();
+        }
+    });
+    
+    
+}
+
+btnComprarProducto.addEventListener("click" , comprar);
+
+
+
+
