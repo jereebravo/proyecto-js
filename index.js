@@ -1,10 +1,10 @@
 let productos = [
-    {nombre: "Oso Blanco" , stock: 5 , precio:3000},
-    {nombre: "Oso Violeta" , stock: 10 , precio:3500},
-    {nombre: "Oso Marron" , stock: 3 , precio:4500},
-    {nombre: "Oso Azul" , stock: 8 , precio:4000},
-    {nombre: "Oso Negro" , stock: 7 , precio:6000},
-    {nombre: "Oso Rojo" , stock: 6 , precio:5000}
+    {nombre: "OSO BlANCO" , stock: 5 , precio:3000},
+    {nombre: "OSO VIOLETA" , stock: 10 , precio:3500},
+    {nombre: "OSO MARRON" , stock: 3 , precio:4500},
+    {nombre: "Oso AZUL" , stock: 8 , precio:4000},
+    {nombre: "Oso NEGRO" , stock: 7 , precio:6000},
+    {nombre: "Oso ROJO" , stock: 6 , precio:5000}
 ]
 
 
@@ -34,14 +34,31 @@ function agregarCarrito(e){
     
 
     let productoExistente = carrito.find( oso => oso.nombre === nombreProducto);
+    let productosStock = productos.find(oso => oso.nombre === nombreProducto);
 
     if( productoExistente ){
-        productoExistente.cantidad++;
+
+        if(productosStock.stock > productoExistente.cantidad){
+            productoExistente.cantidad++;
        
         let cantidad = productoExistente.cantidad;
         let productoPrecioNumerico = parseInt(precioProducto.replace("$" , ""));
         let total = cantidad * productoPrecioNumerico;
         productoExistente.total = total;
+        }
+
+        else{
+            Toastify({
+                text: "No tenemos tanto stock",
+                duration: 2000,
+                gravity:"top",
+                position: "rigth",
+                backgroundColor: "red",
+
+            }).showToast();
+
+        }
+        
 
         
            
@@ -161,11 +178,20 @@ function comprar(){
                 backgroundColor: "green",
 
             }).showToast();
+            setTimeout( function(){
+                window.location.reload();
+
+            },2000);  
         }
-    });
+        
+    })
+    ;
     
+   
     
 }
+
+
 
 btnComprarProducto.addEventListener("click" , comprar);
 
