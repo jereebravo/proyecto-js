@@ -160,32 +160,48 @@ function comprar(){
 
     }
 
-    console.log("el total de la compra es: ", total);
-    Swal.fire({
-        title: "Total de la compra",
-        text: `El total de la compra es $${total}. ¿Desea confirmar la compra?`,
-        icon: "info",
-        cancelButtonText: "Cancelar",
-        confirmButtonText: "Aceptar",
-       
-    }).then((result) => {
-        if (result.isConfirmed){
-            Toastify({
-                text: "Muchas gracias por su compra",
-                duration: 2000,
-                gravity:"top",
-                position: "rigth",
-                backgroundColor: "green",
+    if(total > 0){
+        console.log("el total de la compra es: ", total);
+        Swal.fire({
+            title: "Total de la compra",
+            text: `El total de la compra es $${total}. ¿Desea confirmar la compra?`,
+            icon: "info",
+            cancelButtonText: "Cancelar",
+            confirmButtonText: "Aceptar",
+           
+        }).then((result) => {
+            if (result.isConfirmed){
+                Toastify({
+                    text: "Muchas gracias por su compra",
+                    duration: 2000,
+                    gravity:"top",
+                    position: "rigth",
+                    backgroundColor: "green",
+    
+                }).showToast();
+                setTimeout( function(){
+                    window.location.reload();
+    
+                },2000);  
+            }
+            
+        })
+        ;
+    }
 
-            }).showToast();
-            setTimeout( function(){
-                window.location.reload();
+    else{
+        Toastify({
+            text: "Tiene que agregar productos al carrito",
+            duration: 2000,
+            gravity:"top",
+            position: "rigth",
+            backgroundColor: "red",
 
-            },2000);  
-        }
-        
-    })
-    ;
+        }).showToast();
+
+    }
+
+   
     
    
     
